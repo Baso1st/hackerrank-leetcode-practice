@@ -1,17 +1,16 @@
-import functools
-
-def sort_func(a, b):
-    if a[0] == b[0]:
-        return 0
-    elif a[0] > b[0]:
-        return 1
-    else:
-        return -1
-
-if __name__ == '__main__':
-    arr = [[1,3],[15,18],[2,6],[8,10]]
+class Solution:
+    def numIslands(self, grid: List[List[str]]) -> int:
+        
+        islands = 0
+        
+        for i in range(len(grid)):
+            for j in range(len(grid[i])):
+                left_cell = grid[i][j-1] if j > 0 else '0'
+                top_cell = grid[i-1][j] if i > 0 else '0'
+                cell = grid[i][j]
+                if cell == '1' and left_cell == '0' and top_cell == '0':
+                    islands += 1
+                    
+        return islands 
     
-    arr.sort(key=functools.cmp_to_key(sort_func))
-    sorted_arr = sorted(arr, key=functools.cmp_to_key(sort_func))
-    print(arr)
-    print(sorted_arr)
+    
