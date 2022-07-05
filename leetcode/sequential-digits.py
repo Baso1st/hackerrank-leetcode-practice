@@ -25,3 +25,20 @@ class Solution:
             chunk_size += 1      
             
         return high+1
+
+
+##########################Same solution, but in a cleaner way influnced by LeetCode solution tab#######################
+
+class Solution:
+    def sequentialDigits(self, low: int, high: int) -> List[int]:
+        sample = '123456789'
+        n = 10
+        result = []
+        
+        for i in range(len(str(low)), len(str(high))+1):
+            for j in range(n - i):
+                num = int(sample[j: j + i])
+                if low <= num <= high:
+                    result.append(num)
+        
+        return result
