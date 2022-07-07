@@ -1,8 +1,5 @@
-if __name__ == '__main__':
-    x = [1, 2]
-    y = [[2, 1], [2, 3], [3, 4]]
-    print(x in y)
-
+#https://leetcode.com/problems/maximum-twin-sum-of-a-linked-list/
+#2130. Maximum Twin Sum of a Linked List
 
 
 # Definition for singly-linked list.
@@ -34,7 +31,7 @@ class Solution:
         
         return max_val
             
-
+######################## A better solution that doesn't modify the node ########################
 
     class Solution:
         def pairSum(self, head: Optional[ListNode]) -> int:
