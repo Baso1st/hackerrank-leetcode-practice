@@ -18,3 +18,25 @@ class Solution:
 
         return dp[0]
         
+
+
+
+class Solution:
+    def wordBreak(self, s: str, wordDict: List[str]) -> List[str]:
+        stack = []
+        branches = []
+        self.backtrack(s, 0, wordDict, stack, branches)
+        
+        return branches
+    
+    def backtrack(self, s, i, wordDict, stack, branches):
+        if i >= len(s):
+            branches.append(' '.join(stack))
+            return
+        for w in wordDict:
+            if i + len(w) <= len(s) and s[i:i+len(w)] == w:
+                stack.append(w)
+                self.backtrack(s, i+len(w), wordDict, stack, branches)
+                stack.pop()
+        
+        return False
