@@ -1,9 +1,5 @@
-if __name__ == '__main__':
-    x = [1, 2]
-    y = [[2, 1], [2, 3], [3, 4]]
-    #print(x in y)
-    print(max(2, 2))
-
+#https://leetcode.com/problems/clone-graph/
+#133. Clone Graph
 
 """
 # Definition for a Node.
@@ -16,28 +12,22 @@ class Node:
 class Solution:
     def cloneGraph(self, node: 'Node') -> 'Node':
         if not node:
-            return []
-        if not node[0]:
-            return [[]]
-        
+            return None
+
         q = []
         new_node = Node(node.val)
         node_table = {}
         node_table[node] = new_node
-        q.append((node, new_node))
-        visited = set()
+        q.append(node)
         while q:
-            node, new_node = q.pop(0)
-            visited.add(node)
+            node = q.pop(0)
             for adj in node.neighbors:
-                if adj not in visited:
+                if adj not in node_table:
                     new_adj = Node(adj.val)
                     node_table[adj] = new_adj
-                    new_node.neighbours.append(new_adj)
-                    new_adj.neighbours.append(new_node)
-                    q.append((adj, new_adj))
-                    visited.add(adj)
-                    
+                    q.append(adj)
+                node_table[node].neighbors.append(node_table[adj])
+
         return new_node
                  
                  
